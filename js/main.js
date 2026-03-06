@@ -116,7 +116,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const heroVideo = document.querySelector('.hero-product-video');
 
 if (heroVideo) {
-  heroVideo.addEventListener('loadedmetadata', () => {
+  const initScrub = () => {
     heroVideo.currentTime = 0;
 
     const showcase = document.querySelector('.showcase-scroll-area');
@@ -147,7 +147,19 @@ if (heroVideo) {
       }
     }, { passive: true });
     scrubVideo();
-  });
+  };
+
+  // Handle both: already loaded (cached) and not yet loaded
+  if (heroVideo.readyState >= 1) {
+    initScrub();
+  } else {
+    heroVideo.addEventListener('loadedmetadata', initScrub);
+  }
+
+  // Force load on mobile — some browsers delay loading until interaction
+  if (heroVideo.readyState === 0) {
+    heroVideo.load();
+  }
 }
 
 // ========================
