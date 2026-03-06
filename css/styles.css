@@ -83,7 +83,7 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   line-height: 1.7;
-  overflow-x: hidden;
+  overflow-x: clip;
   padding-bottom: 64px; /* space for sticky purchase bar */
   -webkit-text-size-adjust: 100%; /* prevent iOS text inflation */
 }
@@ -1794,11 +1794,12 @@ strong {
 
   /* Showcase mobile */
   .showcase-scroll-area {
-    height: 160vh;
+    height: 200vh;
   }
 
   .showcase-video-inner {
-    height: 60vh;
+    top: 72px;
+    height: calc(100vh - 72px);
   }
 
   .showcase-below {
@@ -1899,11 +1900,12 @@ strong {
 /* --- Phones (480px) --- */
 @media (max-width: 480px) {
   .showcase-scroll-area {
-    height: 140vh;
+    height: 180vh;
   }
 
   .showcase-video-inner {
-    height: 50vh;
+    top: 72px;
+    height: calc(100vh - 72px);
     padding: 0 var(--spacing-xs);
   }
 
@@ -2051,10 +2053,6 @@ strong {
 
   .hero-sub {
     font-size: var(--font-size-base);
-  }
-
-  .showcase-video-inner {
-    height: 45vh;
   }
 
   .nav-inner {
