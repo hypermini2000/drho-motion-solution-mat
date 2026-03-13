@@ -183,6 +183,34 @@ if (featureVideos.length > 0) {
 }
 
 // ========================
+// Usage video — autoplay on scroll, click to toggle play/pause
+// ========================
+const usageVideo = document.querySelector('.usage-video');
+if (usageVideo) {
+  const usageObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.play().catch(() => {});
+        } else {
+          entry.target.pause();
+        }
+      });
+    },
+    { threshold: 0.25 }
+  );
+  usageObserver.observe(usageVideo);
+
+  usageVideo.addEventListener('click', () => {
+    if (usageVideo.paused) {
+      usageVideo.play().catch(() => {});
+    } else {
+      usageVideo.pause();
+    }
+  });
+}
+
+// ========================
 // Active nav link on scroll
 // ========================
 const sections = document.querySelectorAll('section[id]');
