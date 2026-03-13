@@ -138,15 +138,11 @@ if (heroVideo) {
         scrollHint.style.opacity = Math.max(0, 1 - progress * 5);
       }
 
-      // Fade out the entire sticky hero video container as scroll finishes
-      // so the usage video below transitions in perfectly
-      const videoInner = document.querySelector('.showcase-video-inner');
-      if (videoInner) {
-        // Start fading at 80% scroll progress, fully gone at 100%
-        const fadeProgress = Math.max(0, (progress - 0.8) / 0.2);
-        videoInner.style.opacity = 1 - fadeProgress;
-        videoInner.style.pointerEvents = progress >= 1 ? 'none' : '';
-      }
+      // Fade out the entire scroll area (z-index:3) at the end of the animation,
+      // revealing the usage video (z-index:1) that sits beneath it.
+      const fadeProgress = Math.max(0, (progress - 0.8) / 0.2);
+      showcase.style.opacity = 1 - fadeProgress;
+      showcase.style.pointerEvents = progress >= 1 ? 'none' : '';
 
       ticking = false;
     };

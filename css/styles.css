@@ -380,10 +380,13 @@ strong {
   background: linear-gradient(to bottom, var(--color-bg) 40%, rgba(255, 255, 255, 0.8) 70%, transparent 100%);
 }
 
-/* Scroll area — tall container for video scrub */
+/* Scroll area — tall container for video scrub.
+   isolation:isolate creates its own stacking context so it stays on top during the scrub. */
 .showcase-scroll-area {
   position: relative;
   height: 200vh;
+  isolation: isolate;
+  z-index: 3;
 }
 
 /* Sticky video — pinned while the scroll area scrolls */
@@ -396,7 +399,6 @@ strong {
   justify-content: center;
   padding: 0 var(--spacing-md);
   background: var(--color-bg);
-  z-index: 2;
 }
 
 /* Gradient fade at bottom of video to blend into white */
@@ -420,9 +422,9 @@ strong {
   will-change: transform;
 }
 
-/* Usage video section — pulled up under the hero via negative margin.
-   z-index 1 means the sticky hero (z-index 2) sits on top during scroll.
-   JS fades the hero out at 80-100% progress, revealing this video below. */
+/* Usage video section — sits at z-index 1 behind the scroll area (z-index 3).
+   margin-top: -100vh pulls it up into the dead space below the sticky video.
+   Revealed when the JS fades the showcase-scroll-area à opacity:0 at end of scroll. */
 .usage-video-section {
   position: relative;
   width: 100%;
@@ -442,12 +444,13 @@ strong {
   cursor: pointer;
 }
 
-/* Content after video — normal flow, pulled up to reduce gap */
+/* Content after video — push back down to correct document position.
+   margin-top: 100vh compensates for usage-video-section's -100vh pull. */
 .showcase-below {
   position: relative;
   background: var(--color-bg);
   max-width: 860px;
-  margin: 0 auto;
+  margin: 100vh auto 0;
   padding: var(--spacing-lg) var(--spacing-md) var(--spacing-2xl);
   z-index: 1;
 }
