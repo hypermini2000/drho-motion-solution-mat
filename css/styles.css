@@ -442,8 +442,8 @@ strong {
   position: relative;
   background: var(--color-bg);
   max-width: 860px;
-  margin: -12rem auto 0;
-  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-2xl);
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-md) var(--spacing-2xl);
   z-index: 1;
 }
 
