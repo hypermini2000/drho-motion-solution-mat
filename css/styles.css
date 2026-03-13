@@ -426,9 +426,8 @@ strong {
   background: var(--color-bg);
   display: flex;
   justify-content: center;
-  padding: 0;
-  margin-top: -100vh;
-  z-index: 2;
+  padding: var(--spacing-lg) 0;
+  z-index: 1;
 }
 
 .usage-video {
