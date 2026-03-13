@@ -385,8 +385,6 @@ strong {
 .showcase-scroll-area {
   position: relative;
   height: 200vh;
-  isolation: isolate;
-  z-index: 3;
 }
 
 /* Sticky video — pinned while the scroll area scrolls */
@@ -422,18 +420,16 @@ strong {
   will-change: transform;
 }
 
-/* Usage video section — sits at z-index 1 behind the scroll area (z-index 3).
-   margin-top: -100vh pulls it up into the dead space below the sticky video.
-   Revealed when the JS fades the showcase-scroll-area à opacity:0 at end of scroll. */
+/* Usage video section — full-width after scroll animation */
 .usage-video-section {
   position: relative;
   width: 100%;
   background: var(--color-bg);
   display: flex;
   justify-content: center;
-  padding: var(--spacing-lg) 0;
-  margin-top: -100vh;
-  z-index: 1;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-md);
+  z-index: 2;
 }
 
 .usage-video {
@@ -444,15 +440,14 @@ strong {
   cursor: pointer;
 }
 
-/* Content after video — push back down to correct document position.
-   margin-top: 100vh compensates for usage-video-section's -100vh pull. */
+/* Content after video — normal flow */
 .showcase-below {
   position: relative;
   background: var(--color-bg);
   max-width: 860px;
-  margin: 100vh auto 0;
-  padding: var(--spacing-lg) var(--spacing-md) var(--spacing-2xl);
-  z-index: 1;
+  margin: 0 auto;
+  padding: var(--spacing-md) var(--spacing-md) var(--spacing-2xl);
+  z-index: 2;
 }
 
 .showcase-block {
@@ -1850,7 +1845,7 @@ strong {
   }
 
   .usage-video-section {
-    padding: var(--spacing-md) var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-sm);
   }
 
   .usage-video {
@@ -1858,9 +1853,8 @@ strong {
   }
 
   .showcase-below {
-    margin-top: -4rem;
+    margin-top: 0;
     padding: var(--spacing-sm) var(--spacing-md) var(--spacing-xl);
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   }
 
   .showcase-trust .trust-grid {
@@ -1970,7 +1964,7 @@ strong {
   }
 
   .showcase-below {
-    margin-top: -2rem;
+    margin-top: 0;
     padding: var(--spacing-xs) var(--spacing-sm) var(--spacing-xl);
   }
 

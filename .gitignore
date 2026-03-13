@@ -4,3 +4,4 @@ Thumbs.db
 .env
 .vercel
 node_modules/
+*.mov

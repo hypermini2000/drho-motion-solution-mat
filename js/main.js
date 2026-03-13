@@ -138,11 +138,7 @@ if (heroVideo) {
         scrollHint.style.opacity = Math.max(0, 1 - progress * 5);
       }
 
-      // Fade out the entire scroll area (z-index:3) at the end of the animation,
-      // revealing the usage video (z-index:1) that sits beneath it.
-      const fadeProgress = Math.max(0, (progress - 0.8) / 0.2);
-      showcase.style.opacity = 1 - fadeProgress;
-      showcase.style.pointerEvents = progress >= 1 ? 'none' : '';
+      // No fade-out needed — usage video is in normal flow below
 
       ticking = false;
     };
