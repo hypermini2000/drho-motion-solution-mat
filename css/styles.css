@@ -420,7 +420,7 @@ strong {
   will-change: transform;
 }
 
-/* Usage video section — full-width after scroll animation */
+/* Usage video section — pulls up into the dead space left by the scroll area */
 .usage-video-section {
   position: relative;
   width: 100%;
@@ -429,6 +429,7 @@ strong {
   justify-content: center;
   align-items: center;
   padding: var(--spacing-md) var(--spacing-md);
+  margin-top: calc(-100vh + 72px);
   z-index: 2;
 }
 
@@ -1846,6 +1847,7 @@ strong {
 
   .usage-video-section {
     padding: var(--spacing-sm) var(--spacing-sm);
+    margin-top: calc(-100vh + 72px);
   }
 
   .usage-video {
@@ -1961,6 +1963,11 @@ strong {
     top: 72px;
     height: calc(100vh - 72px);
     padding: 0 var(--spacing-xs);
+  }
+
+  .usage-video-section {
+    margin-top: calc(-80vh + 72px);
+    padding: var(--spacing-xs) var(--spacing-xs);
   }
 
   .showcase-below {
