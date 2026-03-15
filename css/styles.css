@@ -380,8 +380,7 @@ strong {
   background: linear-gradient(to bottom, var(--color-bg) 40%, rgba(255, 255, 255, 0.8) 70%, transparent 100%);
 }
 
-/* Scroll area — tall container for video scrub.
-   isolation:isolate creates its own stacking context so it stays on top during the scrub. */
+/* Scroll area — tall container for video scrub */
 .showcase-scroll-area {
   position: relative;
   height: 200vh;
@@ -420,7 +419,8 @@ strong {
   will-change: transform;
 }
 
-/* Usage video section — pulls up into the dead space left by the scroll area */
+/* Usage video section — sits inside the scroll-area, directly after the
+   sticky element. No negative margins or z-index tricks needed. */
 .usage-video-section {
   position: relative;
   width: 100%;
@@ -428,9 +428,7 @@ strong {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--spacing-md) var(--spacing-md);
-  margin-top: calc(-100vh + 72px);
-  z-index: 2;
+  padding: var(--spacing-lg) 0;
 }
 
 .usage-video {
@@ -441,14 +439,13 @@ strong {
   cursor: pointer;
 }
 
-/* Content after video — normal flow */
+/* Content after video — normal document flow */
 .showcase-below {
   position: relative;
   background: var(--color-bg);
   max-width: 860px;
   margin: 0 auto;
-  padding: var(--spacing-md) var(--spacing-md) var(--spacing-2xl);
-  z-index: 2;
+  padding: var(--spacing-lg) var(--spacing-md) var(--spacing-2xl);
 }
 
 .showcase-block {
@@ -1847,7 +1844,6 @@ strong {
 
   .usage-video-section {
     padding: var(--spacing-sm);
-    margin-top: -100vh;
   }
 
   .usage-video {
@@ -1855,7 +1851,6 @@ strong {
   }
 
   .showcase-below {
-    margin-top: 100vh;
     padding: var(--spacing-sm) var(--spacing-md) var(--spacing-xl);
   }
 
