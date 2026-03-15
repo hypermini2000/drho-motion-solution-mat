@@ -1846,8 +1846,8 @@ strong {
   }
 
   .usage-video-section {
-    padding: var(--spacing-sm) var(--spacing-sm);
-    margin-top: calc(-100vh + 72px);
+    padding: var(--spacing-sm);
+    margin-top: -100vh;
   }
 
   .usage-video {
@@ -1855,7 +1855,7 @@ strong {
   }
 
   .showcase-below {
-    margin-top: 0;
+    margin-top: 100vh;
     padding: var(--spacing-sm) var(--spacing-md) var(--spacing-xl);
   }
 
